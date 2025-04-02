@@ -8,9 +8,12 @@ import lombok.Data;
 @Entity
 @Data
 public class CardGameUser {
+
     @Id
     private String email;
     @ManyToOne
     private Business business;
     private String fullName;
+
+
 }
