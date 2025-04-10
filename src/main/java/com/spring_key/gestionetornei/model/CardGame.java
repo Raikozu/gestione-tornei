@@ -1,9 +1,6 @@
 package com.spring_key.gestionetornei.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +11,8 @@ public class CardGame {
     @ManyToOne
     private Business business;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     @OneToMany(mappedBy ="cardGame")
     private List<Format> formats;

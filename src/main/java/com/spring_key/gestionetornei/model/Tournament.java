@@ -14,6 +14,8 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime date;
+    private String name;
+    private int capacity;
     @ManyToOne
     private Format format;
 
