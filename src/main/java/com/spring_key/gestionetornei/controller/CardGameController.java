@@ -32,5 +32,14 @@ public class CardGameController {
     @GetMapping("/get")
     public List<CardGame> getAll(){
         return cardGameService.getAll();}
+
+    @PutMapping("/update/{id}/cardName/{cardName}")
+    public ResponseEntity<CardGame> updateGame(@PathVariable long id,@PathVariable String cardName){
+        return new ResponseEntity<>(cardGameService.updateGame(cardName, id), HttpStatus.ACCEPTED);
+    }
+    @DeleteMapping("/delete/{id}")
+    public boolean delete(@PathVariable long id){
+        return cardGameService.delete(id);
+    }
 }
 

@@ -43,7 +43,6 @@ public class BusinessController {
     //Delete
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable long id){
-
         return businessService.delete(id);
     }
 }

@@ -1,12 +1,15 @@
 package com.spring_key.gestionetornei.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.List;
 
 @Entity
 @Data
+@ToString(exclude = "formats")
 public class CardGame {
     @ManyToOne
     private Business business;
@@ -14,7 +17,8 @@ public class CardGame {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy ="cardGame")
-    private List<Format> formats;
 
+    @OneToMany(mappedBy = "cardGame", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Format> formats;
 }

@@ -37,5 +37,24 @@ public class CardGameService {
         List<CardGame> cardGames;
         return cardGameRepository.findAll();}
 
+    public CardGame updateGame(String cardName, long id) {
+        CardGame cardGame = get(id);
+        if (cardGame != null) {
+            cardGame.setName(cardName);
+            cardGameRepository.save(cardGame);//qui sto salvando
+
+        }
+        return null;
+    }
+
+    public boolean delete(long id) {
+        CardGame cardGame = get(id);
+        if(cardGame!=null){
+            cardGameRepository.delete(cardGame);
+            return true;
+        }
+        return false;
+    }
+
 }
 
